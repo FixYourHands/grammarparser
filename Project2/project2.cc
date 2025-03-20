@@ -19,17 +19,25 @@ struct Terminals {
 	vector<string> terminals;
 };
 
+Terminals universalSet;
+
 // read grammar
 void ReadGrammar() {
+	//LexicalAnalyzer lex;
+	//Parser p(lex);
+	//universalSet.nonterminals = p.getNonTerminals();
+	//universalSet.terminals = p.getTerminals();
 }
 /*
 * Task 1:
 * Printing the terminals, then nonterminals of grammar in appearing order
 * output is one line, and all names are space delineated
 */
-void Task1(TaskOne task)
+void Task1()
 {
-	task.executeTask();
+	LexicalAnalyzer lex;
+	Parser p(lex);
+	p.executeTaskOne();
 }
 /*
 * Task 2:
@@ -65,13 +73,7 @@ int main(int argc, char* argv[])
 {
 	//ifstream inputFile(argv[2]);
 	//TaskOne task1(inputFile);
-	LexicalAnalyzer lex;
-	Parser p(lex);
-	p.lexer.peek(2).Print();
-	Token t1 = lex.GetToken();
-	Token t2 = lex.GetToken();
-	t1.Print();
-	t2.Print();
+	
 
 	
 
@@ -106,8 +108,8 @@ int main(int argc, char* argv[])
 	// and represent it internally in data structures
 	// ad described in project 2 presentation file
 	switch (task) {
-	//case 1: Task1(task1);
-		//break;
+	case 1: Task1();
+		break;
 	case 2: Task2();
 		break;
 	case 3: Task3();

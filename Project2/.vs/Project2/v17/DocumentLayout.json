@@ -3,8 +3,28 @@
   "WorkspaceRootPath": "F:\\College\\CSE 340\\grammarparser\\Project2\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{70B2B687-F9C6-4F1E-9E32-AAD703D1B183}|Project2.vcxproj|F:\\College\\CSE 340\\grammarparser\\Project2\\parser.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{70B2B687-F9C6-4F1E-9E32-AAD703D1B183}|Project2.vcxproj|solutionrelative:parser.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{70B2B687-F9C6-4F1E-9E32-AAD703D1B183}|Project2.vcxproj|F:\\College\\CSE 340\\grammarparser\\Project2\\parser.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{70B2B687-F9C6-4F1E-9E32-AAD703D1B183}|Project2.vcxproj|solutionrelative:parser.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70B2B687-F9C6-4F1E-9E32-AAD703D1B183}|Project2.vcxproj|F:\\College\\CSE 340\\grammarparser\\Project2\\input3.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{70B2B687-F9C6-4F1E-9E32-AAD703D1B183}|Project2.vcxproj|solutionrelative:input3.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70B2B687-F9C6-4F1E-9E32-AAD703D1B183}|Project2.vcxproj|F:\\College\\CSE 340\\grammarparser\\Project2\\lexer.cc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{70B2B687-F9C6-4F1E-9E32-AAD703D1B183}|Project2.vcxproj|solutionrelative:lexer.cc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70B2B687-F9C6-4F1E-9E32-AAD703D1B183}|Project2.vcxproj|F:\\College\\CSE 340\\grammarparser\\Project2\\inputbuf.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{70B2B687-F9C6-4F1E-9E32-AAD703D1B183}|Project2.vcxproj|solutionrelative:inputbuf.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70B2B687-F9C6-4F1E-9E32-AAD703D1B183}|Project2.vcxproj|F:\\College\\CSE 340\\grammarparser\\Project2\\project2.cc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{70B2B687-F9C6-4F1E-9E32-AAD703D1B183}|Project2.vcxproj|solutionrelative:project2.cc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{70B2B687-F9C6-4F1E-9E32-AAD703D1B183}|Project2.vcxproj|F:\\College\\CSE 340\\grammarparser\\Project2\\lexer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -13,22 +33,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{70B2B687-F9C6-4F1E-9E32-AAD703D1B183}|Project2.vcxproj|F:\\College\\CSE 340\\grammarparser\\Project2\\task1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{70B2B687-F9C6-4F1E-9E32-AAD703D1B183}|Project2.vcxproj|solutionrelative:task1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{70B2B687-F9C6-4F1E-9E32-AAD703D1B183}|Project2.vcxproj|F:\\College\\CSE 340\\grammarparser\\Project2\\inputbuf.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{70B2B687-F9C6-4F1E-9E32-AAD703D1B183}|Project2.vcxproj|solutionrelative:inputbuf.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{70B2B687-F9C6-4F1E-9E32-AAD703D1B183}|Project2.vcxproj|F:\\College\\CSE 340\\grammarparser\\Project2\\lexer.cc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{70B2B687-F9C6-4F1E-9E32-AAD703D1B183}|Project2.vcxproj|solutionrelative:lexer.cc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{70B2B687-F9C6-4F1E-9E32-AAD703D1B183}|Project2.vcxproj|F:\\College\\CSE 340\\grammarparser\\Project2\\parser.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{70B2B687-F9C6-4F1E-9E32-AAD703D1B183}|Project2.vcxproj|solutionrelative:parser.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{70B2B687-F9C6-4F1E-9E32-AAD703D1B183}|Project2.vcxproj|F:\\College\\CSE 340\\grammarparser\\Project2\\project2.cc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{70B2B687-F9C6-4F1E-9E32-AAD703D1B183}|Project2.vcxproj|solutionrelative:project2.cc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{70B2B687-F9C6-4F1E-9E32-AAD703D1B183}|Project2.vcxproj|F:\\College\\CSE 340\\grammarparser\\Project2\\inputbuf.cc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -46,37 +50,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "input3.txt",
+              "DocumentMoniker": "F:\\College\\CSE 340\\grammarparser\\Project2\\input3.txt",
+              "RelativeDocumentMoniker": "input3.txt",
+              "ToolTip": "F:\\College\\CSE 340\\grammarparser\\Project2\\input3.txt",
+              "RelativeToolTip": "input3.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-03-19T20:41:01.724Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "parser.cpp",
               "DocumentMoniker": "F:\\College\\CSE 340\\grammarparser\\Project2\\parser.cpp",
               "RelativeDocumentMoniker": "parser.cpp",
               "ToolTip": "F:\\College\\CSE 340\\grammarparser\\Project2\\parser.cpp",
               "RelativeToolTip": "parser.cpp",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAAEIAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAOIAAAAAAAAAAAAAAJYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-03-18T06:29:58.191Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "parser.h",
               "DocumentMoniker": "F:\\College\\CSE 340\\grammarparser\\Project2\\parser.h",
               "RelativeDocumentMoniker": "parser.h",
               "ToolTip": "F:\\College\\CSE 340\\grammarparser\\Project2\\parser.h",
               "RelativeToolTip": "parser.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-03-18T03:49:14.702Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "task1.cpp",
               "DocumentMoniker": "F:\\College\\CSE 340\\grammarparser\\Project2\\task1.cpp",
               "RelativeDocumentMoniker": "task1.cpp",
@@ -84,25 +101,24 @@
               "RelativeToolTip": "task1.cpp",
               "ViewState": "AgIAAA8AAAAAAAAAAAAAAGAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-17T05:37:11.39Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-17T05:37:11.39Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "project2.cc",
               "DocumentMoniker": "F:\\College\\CSE 340\\grammarparser\\Project2\\project2.cc",
               "RelativeDocumentMoniker": "project2.cc",
               "ToolTip": "F:\\College\\CSE 340\\grammarparser\\Project2\\project2.cc",
               "RelativeToolTip": "project2.cc",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAAEQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACQAAAAAAAAAAAAUwCYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-03-15T22:55:19.955Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "task1.h",
               "DocumentMoniker": "F:\\College\\CSE 340\\grammarparser\\Project2\\task1.h",
               "RelativeDocumentMoniker": "task1.h",
@@ -110,12 +126,11 @@
               "RelativeToolTip": "task1.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-17T05:35:15.672Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-17T05:35:15.672Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "inputbuf.cc",
               "DocumentMoniker": "F:\\College\\CSE 340\\grammarparser\\Project2\\inputbuf.cc",
               "RelativeDocumentMoniker": "inputbuf.cc",
@@ -123,12 +138,11 @@
               "RelativeToolTip": "inputbuf.cc",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-15T22:54:42.751Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-15T22:54:42.751Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "inputbuf.h",
               "DocumentMoniker": "F:\\College\\CSE 340\\grammarparser\\Project2\\inputbuf.h",
               "RelativeDocumentMoniker": "inputbuf.h",
@@ -136,34 +150,32 @@
               "RelativeToolTip": "inputbuf.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-15T22:54:11.558Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-15T22:54:11.558Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "lexer.cc",
               "DocumentMoniker": "F:\\College\\CSE 340\\grammarparser\\Project2\\lexer.cc",
               "RelativeDocumentMoniker": "lexer.cc",
               "ToolTip": "F:\\College\\CSE 340\\grammarparser\\Project2\\lexer.cc",
               "RelativeToolTip": "lexer.cc",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAFEAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFEAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-03-15T22:52:41.628Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "lexer.h",
               "DocumentMoniker": "F:\\College\\CSE 340\\grammarparser\\Project2\\lexer.h",
               "RelativeDocumentMoniker": "lexer.h",
               "ToolTip": "F:\\College\\CSE 340\\grammarparser\\Project2\\lexer.h",
               "RelativeToolTip": "lexer.h",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAABsAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-15T22:52:30.643Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-15T22:52:30.643Z"
             }
           ]
         }
