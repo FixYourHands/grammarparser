@@ -1,0 +1,9 @@
+A-> B F C D E F *
+C -> E F *
+E -> a E *
+B -> a E *
+E -> a *
+F -> *
+D -> *
+C -> D F *
+#

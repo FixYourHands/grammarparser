@@ -14,19 +14,23 @@
 #include "task1.h"
 using namespace std;
 
-struct Terminals {
-	vector<string> nonterminals;
-	vector<string> terminals;
+struct Tasks {
+	string task1;
+	string task2;
+	string task3;
+	string task4;
+	string task5;
+	string task6;
 };
 
-Terminals universalSet;
+Tasks execution;
 
 // read grammar
 void ReadGrammar() {
-	//LexicalAnalyzer lex;
-	//Parser p(lex);
-	//universalSet.nonterminals = p.getNonTerminals();
-	//universalSet.terminals = p.getTerminals();
+	LexicalAnalyzer lex;
+	Parser p(lex);
+	execution.task1 = p.executeTaskOne();
+	execution.task2 = p.executeTaskTwo();
 }
 /*
 * Task 1:
@@ -35,9 +39,7 @@ void ReadGrammar() {
 */
 void Task1()
 {
-	LexicalAnalyzer lex;
-	Parser p(lex);
-	p.executeTaskOne();
+	cout << execution.task1;
 }
 /*
 * Task 2:
@@ -45,6 +47,7 @@ void Task1()
 */
 void Task2()
 {
+	cout << execution.task2;
 }
 // Task 3: FIRST sets
 void Task3()
@@ -71,24 +74,6 @@ void resetStream(ifstream& stream)
 
 int main(int argc, char* argv[])
 {
-	//ifstream inputFile(argv[2]);
-	//TaskOne task1(inputFile);
-	
-
-	
-
-	string line;
-	int count = 0;
-
-	//resetStream(inputFile);
-	
-	
-
-
-	//LexicalAnalyzer lex;
-	//lex.GetToken();
-
-	cout << "Test Line\n";
 	
 
 

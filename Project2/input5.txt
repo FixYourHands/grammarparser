@@ -1,0 +1,6 @@
+A -> C B *
+A -> * A -> D C E *
+B -> * B -> b *
+C -> B D *
+D -> d E *
+E -> e D * D -> * #
