@@ -141,13 +141,16 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
+    <Text Include="input10.txt" />
     <Text Include="input2.txt" />
     <Text Include="input3.txt" />
     <Text Include="input4.txt" />
     <Text Include="input5.txt" />
+    <Text Include="input6.txt" />
     <Text Include="input9.txt" />
     <Text Include="input12.txt" />
     <Text Include="inputSpecial.txt" />
+    <Text Include="inputTest.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

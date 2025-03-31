@@ -47,9 +47,10 @@ private:
 	void storeRules();
 	void storeNonTerminals();
 	void storeTerminals();
+	vector<vector<string>> sortSetList(set<vector<string>>& set);
 	vector<Rules> fixedRuleList();
 	void match(TokenType token);
-	string leftFactor();
+	vector<Rules> leftFactor();
 	void getNullable();
 	void storeFirstSets();
 	void storeFollowSets();

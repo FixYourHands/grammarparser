@@ -31,6 +31,10 @@ void ReadGrammar() {
 	Parser p(lex);
 	execution.task1 = p.executeTaskOne();
 	execution.task2 = p.executeTaskTwo();
+	execution.task3 = p.executeTaskThree();
+	//execution.task4 = p.executeTaskFour();
+	//execution.task5 = p.executeTaskFive();
+	//execution.task6 = p.executeTaskSix();
 }
 /*
 * Task 1:
@@ -52,18 +56,22 @@ void Task2()
 // Task 3: FIRST sets
 void Task3()
 {
+	cout << execution.task3;
 }
 // Task 4: FOLLOW sets
 void Task4()
 {
+	cout << execution.task4;
 }
 // Task 5: left factoring
 void Task5()
 {
+	cout << execution.task5;
 }
 // Task 6: eliminate left recursion
 void Task6()
 {
+	cout << execution.task6;
 }
 
 void resetStream(ifstream& stream)

@@ -3,35 +3,7 @@
 #include <algorithm>
 #include <ctype.h>
 
-vector<string> Parser::longestCommonPrefix(vector<string>& v1, vector<string>& v2)
-{
-	string prefix = "";
-	string string1 = "";
-	string string2 = "";
-	vector<string> ret;
 
-	for (auto& s : v1) //convert to string
-		string1 += s;
-	for (auto& s : v2) //convert to string
-		string2 += s;
-	int minLength = min(string1.size(), string2.size());
-
-	for (int i = 0; i < minLength - 1; i++)
-	{
-		if (string1[i] == string2[i])
-			prefix += string1[i];
-		else
-			break;
-	}
-
-	for (auto& c : prefix)
-	{
-		ret.push_back(string() + c);
-	}
-
-	cout << "test";
-	return ret;
-}
 
 void Parser::storeRules() //store left and right hand side in an array
 {
@@ -124,7 +96,6 @@ Parser::Parser(LexicalAnalyzer& lex)
 	storeFirstSets();
 	storeFirstSets();
 	storeFollowSets();
-	executeTaskThree();
 	executeTaskFour();
 	leftFactor();
 
@@ -242,38 +213,22 @@ string Parser::executeTaskTwo()
 		}
 	}
 
-	for (auto& r : rules)
+	ret += "Nullable = {";
+	int count = 0;
+	for (int i = 0; i < nonTerminals.size(); i++)
 	{
-		for (auto& rhs : r.RHS)
+		string LHS = nonTerminals[i];
+		if (nullableMap[LHS] == TRUE)
 		{
-			for (auto& word : rhs)
-			{
-				if (nullableMap[word] == TRUE)
-				{
-					if (find(nulls.begin(),nulls.end(),word) == nulls.end()) //only add if not already in vector
-						nulls.push_back(word);
-				}
-			}
+			ret += LHS;
+			count++;
+			if (count == nullCount)
+				break;
+
+			ret += ", ";
 		}
 	}
-
-	ret += "Nullable = {";
-	if (nullCount == 0)
-	{
-		ret += "}";
-		
-		return ret;
-	}
 	
-	for (int i = 0; i < nulls.size(); i++)
-	{
-		ret += nulls[i];
-
-		if (i == nulls.size() - 1)
-			break;
-
-		ret += ", ";
-	}
 
 	ret += "}";
 	return ret;
@@ -281,37 +236,49 @@ string Parser::executeTaskTwo()
 
 string Parser::executeTaskThree()
 {
-	for (auto& pair : firstSets)
+	string ret = "";
+	unordered_map<string, bool> seen;
+	vector<string> temp;
+	for (auto& n : nonTerminals)
 	{
-		int size = pair.second.size();
+		string LHS = n;
+		int size = firstSets[LHS].size();
 		if (size == 0) //don't add to output if firstSet is empty
 			continue;
-		cout << "FIRST(" + pair.first + ") = {";
-		for (auto& s : pair.second)
+		ret += "FIRST(" + LHS + ") = {";
+		for (auto& t : terminals)
 		{
-			size--;
-			cout << s;
-
-			if (size > 0)
+			if (firstSets[LHS].find(t) != firstSets[LHS].end())
 			{
-				cout << ", ";
+				size--;
+				ret += t;
+				if (size > 0)
+				{
+					ret += ", ";
+				}
 			}
+			
 		}
-		cout << "}\n";
+		ret += "}\n";
 	}
+	
 
-	return "";
+
+	return ret;
 }
 
 string Parser::executeTaskFour()
 {
-	for (auto& pair : followSets)
+	string ret = "";
+	for (auto& n : nonTerminals)
 	{
-		int size = pair.second.size();
+		string LHS = n;
+		int size = followSets[LHS].size();
 		if (size == 0) //don't add to output if firstSet is empty
 			continue;
-		cout << "Follow(" + pair.first + ") = {";
-		for (auto& s : pair.second)
+		cout << "Follow(" +LHS + ") = {";
+		ret += "Follow(" + LHS + ") = {";
+		for (auto& s : followSets[LHS])
 		{
 			size--;
 			cout << s;
@@ -319,12 +286,92 @@ string Parser::executeTaskFour()
 			if (size > 0)
 			{
 				cout << ", ";
+				ret += ", ";
 			}
 		}
 		cout << "}\n";
+		ret += "}\n";
+	}
+	if (!ret.empty() && ret.back() == '\n') {
+		ret.pop_back();
 	}
 
-	return "";
+	return ret;
+}
+
+string Parser::executeTaskFive()
+{
+	string ret = "";
+	vector<Rules> g = leftFactor();
+	sort(g.begin(), g.end(), [](const Rules& a, const Rules& b)
+		{
+			return a.LHS < b.LHS;
+		});
+
+	for (auto& r : g)
+	{
+		for (int i = 0; i < r.RHS[0].size(); i++)
+		{
+			if (r.RHS[0].back() == "*")
+				r.RHS[0].back() = "#";			
+		}
+
+	}
+
+	for (auto& r : g)
+	{
+		for (auto& w : r.RHS[0])
+		{
+			if (r.RHS[0].back() != "#")
+			{
+				r.RHS[0].push_back("#");
+				break;
+			}
+		}
+	}
+
+	for (auto& r : g)
+	{
+		//cout << r.LHS + "-> ";
+		ret += (r.LHS + "-> ");
+		for (int i = 0; i < r.RHS[0].size(); i++)
+		{
+			//cout << r.RHS[0][i] + " ";
+			ret += r.RHS[0][i] + " ";
+		}
+		//cout << "\n";
+		ret += "\n";
+	}
+	return ret;
+}
+
+vector<string> Parser::longestCommonPrefix(vector<string>& v1, vector<string>& v2)
+{
+	string prefix = "";
+	string string1 = "";
+	string string2 = "";
+	vector<string> ret;
+
+	for (auto& s : v1) //convert to string
+		string1 += s;
+	for (auto& s : v2) //convert to string
+		string2 += s;
+	int minLength = min(string1.size(), string2.size());
+
+	for (int i = 0; i < minLength - 1; i++)
+	{
+		if (string1[i] == string2[i])
+			prefix += string1[i];
+		else
+			break;
+	}
+
+	for (auto& c : prefix)
+	{
+		ret.push_back(string() + c); //convert back to vector
+	}
+
+	return ret;
 }
 
 vector<Rules> Parser::fixedRuleList()
@@ -367,6 +414,17 @@ vector<Rules> Parser::fixedRuleList()
 	return newGrammar;
 }
 
+vector<vector<string>> Parser::sortSetList(set<vector<string>>& set) //sort vectors by longest
+{
+	vector<vector<string>> list(set.begin(), set.end());
+	sort(list.begin(), list.end(), [](const vector<std::string>& a, const vector<std::string>& b)
+		{
+			return a.size() > b.size();
+		});
+
+	return list;
+}
+
 unordered_map<string, set<vector<string>>> Parser::getCommonPrefixes()
 {
 	int index = 0;
@@ -392,20 +450,83 @@ unordered_map<string, set<vector<string>>> Parser::getCommonPrefixes()
 	return commonPrefixes;
 }
 
-string Parser::leftFactor()
+vector<Rules> Parser::leftFactor()
 {
 	
 	unordered_map<string, set<vector<string>>> commonPrefixes = getCommonPrefixes();
-	
+	vector<Rules> updatedGrammar;
+	unordered_map<string, bool> passthrough; //checking if a rule has already been added to the list
+	int longestMatch = 0;
+	int variableCount = 1;
+	set<string> seen;
+	Rules rule2add;
+	for (auto& pair : commonPrefixes)
+	{
+		vector<vector<string>> sorted = sortSetList(pair.second);
+		for (auto& v : sorted) //iterate through each vector in set
+		{
+			for (int i = 0; i < singleLineRules.size(); i++)
+			{
+				string LHS = singleLineRules[i].LHS;
+				Rules currRule = singleLineRules[i];
+				vector<string> vec = v;
+				if (vec.back() != "*")
+				{
+					vec.push_back("#"); //add * to end of each rule
+				}
+				if (commonPrefixes.find(LHS) == commonPrefixes.end()) //if rule does not have any rules that need fixing
+				{
+					if (!passthrough[LHS])
+					{
+						updatedGrammar.push_back(singleLineRules[i]);
+						seen.insert(LHS);
+					}
+					
+
+				}
+				else
+				{
+					if (longestCommonPrefix(singleLineRules[i].RHS[0], vec) == v) //check if current rule contains prefix
+					{
+						int size = v.size();
+						currRule.LHS = LHS + to_string(variableCount); //update rule name
+
+						if (!passthrough[currRule.LHS])
+						{
+							Rules rule;
+							rule.LHS = LHS, rule.RHS.push_back(v);
+							rule.RHS[0].push_back(currRule.LHS);
+							rule.RHS[0].push_back("#");
+
+							rule2add = rule;
+							passthrough[currRule.LHS] = true;
+
+						}
+						currRule.RHS[0].erase(currRule.RHS[0].begin(), currRule.RHS[0].begin() + size); //remove prefix
+						
+						updatedGrammar.push_back(currRule); //add updated rule to list
+						singleLineRules[i].RHS[0].clear();
+						
+					}
+					continue;
+				}
+			}
+
+			singleLineRules.push_back(rule2add);
+			for (auto& s : seen)
+			{
+				passthrough[s] = true;
+			}
+			variableCount++;
+		}
+		variableCount = 1;
+	}
+	updatedGrammar.push_back(rule2add);
+
 
 	
-	int longestPrefixCount = 1;
 
-
-
-	
-
-	return "";
+	return updatedGrammar;
 }
 
 
@@ -429,49 +550,73 @@ NULLABLE_STATUS Parser::getNullableStatus(string word)
 void Parser::storeFirstSets()
 {
 	
-	set<string> set;
 	
-
+	 //initalization
 	for (auto& r : rules)
 	{
-		string curr = r.LHS;
-		for (auto& vec : r.RHS)
+		string LHS = r.LHS;
+
+		for (auto& RHS : r.RHS)
 		{
-			bool completed = false;
-			bool isFirst = true;
-			for (auto& word : vec)
+			if (!RHS.empty())
 			{
-				if (!completed)
+				if (contains(RHS[0], 't')) //check if first word is a terminal
 				{
-					if (isFirst && word == "*")
+					firstSets[LHS].insert(RHS[0]);
+				}
+			}
+			
+		}
+	}
+	
+	bool changed = true;
+	int count = 0;
+	while (changed)
+	{
+		count++;
+		changed = false;
+		for (auto& r : rules)
+		{
+			string LHS = r.LHS;
+
+			for (auto& RHS : r.RHS)
+			{
+				for (auto& w : RHS)
+				{
+					if (contains(w, 'n')) //if we run into a nonterminal
 					{
-						//firstSets[curr].insert("_");
-						break;
-					}
-					if (contains(word, 't')) //if word is a terminal
-					{
-						firstSets[curr].insert(word); //add to first set
-						break;
-					}
-					else if (contains(word, 'n')) //if word is a nonTerminal
-					{
-						if (nullableMap[word] == TRUE) //if nullable
+						
+						if (nullableMap[w] == TRUE)
 						{
-							merge(firstSets[curr].begin(), firstSets[curr].end(), firstSets[word].begin(), firstSets[word].end(), inserter(set, set.begin()));
-							firstSets[curr] = set;
-							//firstSets[curr].insert("_"); //epsilon
-							isFirst = false;
-							continue;
+							set<string> set;
+
+							if (includes(firstSets[LHS].begin(), firstSets[LHS].end(), firstSets[w].begin(), firstSets[w].end())) //if we already have this set
+								continue;
+							merge(firstSets[LHS].begin(), firstSets[LHS].end(), firstSets[w].begin(), firstSets[w].end(), inserter(set, set.begin()));
+							firstSets[LHS] = set;
+							changed = true;
 						}
-						else if (nullableMap[word] == FALSE)
+						else
 						{
-							merge(firstSets[curr].begin(), firstSets[curr].end(), firstSets[word].begin(), firstSets[word].end(), inserter(set, set.begin()));
-							firstSets[curr] = set;
+							set<string> set;
+							if (includes(firstSets[LHS].begin(), firstSets[LHS].end(), firstSets[w].begin(), firstSets[w].end())) //if we already have this set
+								break;
+
+							merge(firstSets[LHS].begin(), firstSets[LHS].end(), firstSets[w].begin(), firstSets[w].end(), inserter(set, set.begin()));
+							firstSets[LHS] = set;
+							changed = true;
 							break;
 						}
 					}
+					if (contains(w, 't')) //if we run into terminal
+					{
+						if (firstSets[LHS].find(w) != firstSets[LHS].end()) //if set already contains value
+							break;
+						firstSets[LHS].insert(w);
+						changed = true;
+						break;
+					}
 				}
-				
 			}
 		}
 	}
@@ -484,6 +629,9 @@ void Parser::storeFollowSets()
 	bool startVariableFound = false;
 	string startingVariable = rules[0].LHS;
 	followSets[startingVariable].insert("$");
+	
+
+	//first pass rules 3 and 4
 	for (auto& r : rules)
 	{
 		string LHS = r.LHS;
@@ -499,126 +647,169 @@ void Parser::storeFollowSets()
 					currentIndex++;
 					continue;
 				}
-				if (currentIndex + 1 >= size) //if currentword is the last rule in a string
+				int nextIndex = currentIndex + 1;
+				string next;
+				if (nextIndex < RHS.size())
 				{
-					set<string> temp;
-					merge(followSets[word].begin(), followSets[word].end(), followSets[LHS].begin(), followSets[LHS].end(), inserter(temp, temp.begin())); //add follow set of LHS
-					followSets[word] = temp;
+					while (nextIndex < RHS.size())
+					{
+						next = RHS[nextIndex];
+						if (contains(next, 't')) //if following word is a terminal
+						{
+							followSets[word].insert(next); //add terminal to follow set of Non Terminal
+							break;
+						}
+						else if (contains(next, 'n')) //if follow word is a non terminal
+						{
+							if (nullableMap[next] != TRUE) //if not nullable
+							{
+								set<string> temp;
+								merge(followSets[word].begin(), followSets[word].end(), firstSets[next].begin(), firstSets[next].end(), inserter(temp, temp.begin())); //add first set of next word to follow set of original non terminal
+								followSets[word] = temp;
+								break;
+							}
+							else
+							{
+								set<string> temp;
+								merge(followSets[word].begin(), followSets[word].end(), firstSets[next].begin(), firstSets[next].end(), inserter(temp, temp.begin())); //add first set of next word to follow set of original non terminal
+								followSets[word] = temp;
+							}
+						}
+						nextIndex++;
+					}
 				}
-				else
-				{
-					string next = RHS[currentIndex + 1];
-					if (contains(next, 't')) //if follow word is a terminal
-					{
-						followSets[word].insert(next);
-					}
-					else if (contains(next,'n'))
-					{
-						set<string> temp;
-						merge(followSets[word].begin(), followSets[word].end(), firstSets[next].begin(), firstSets[next].end(), inserter(temp, temp.begin())); //add first set of next
-						followSets[word] = temp;
-					}
-					else if (next == "*")
-					{
-						set<string> temp;
-						merge(followSets[word].begin(), followSets[word].end(), followSets[LHS].begin(), followSets[LHS].end(), inserter(temp, temp.begin())); //add follow set of LHS
-						followSets[word] = temp;
-					}
-				}
+
+				
+				
 				currentIndex++;
 			}
 		}
 	}
-	
-	cout << "stop\n";
+
+	bool changed = true;
+	while (changed)
+	{
+		changed = false;
+
+		for (auto& r : rules)
+		{
+			string LHS = r.LHS;
+			for (auto& RHS : r.RHS)
+			{
+				NULLABLE_STATUS status = TRUE;
+				int currentIndex = 0;
+				for (auto& word : RHS)
+				{
+					if (word == "*")
+					{
+						break;
+					}
+
+					if (!contains(word, 'n')) //if not a non terminal, skip
+					{
+						continue;
+					}
+
+					string next;
+					int nextIndex = currentIndex + 1;
+					while (nextIndex < RHS.size())
+					{
+						next = RHS[nextIndex];
+
+						if (next == "*")
+							break;
+						if (contains(next,'t') || nullableMap[next] != TRUE)
+						{
+							status = FALSE;
+							break;
+						}
+						nextIndex++;
+					}
+					if (status == TRUE) //if all non terminals were nullable add follow set of left hand side
+					{
+						set<string> temp;
+						merge(followSets[word].begin(), followSets[word].end(), followSets[LHS].begin(), followSets[LHS].end(), inserter(temp, temp.begin()));
+
+						if (followSets[word] != temp) //check if a change would occur to the follow set
+						{
+							changed = true;
+							followSets[word] = temp;
+						}
+						
+					}
+					status = TRUE;
+					currentIndex++;
+				}
+			}
+		}
+	}
+
 }
 void Parser::getNullable()
 {
 	bool terminalEncountered = false;
-
-	for (int i = 0; i < rules.size(); i++)
+	bool changed = true;
+	bool nullable = true;
+	while (changed)
 	{
-		string& currentNonTerminal = rules[i].LHS;
-		bool isFirstEncountered = true;
-		bool nullable = true;
-		bool waitingPotential = false;
-		
-		for (auto& vec : rules[i].RHS) //iterator for inner vector
+		changed = false;
+		for (auto& r : rules)
 		{
-			NULLABLE_STATUS temp = POTENTIAL;
-			int wordCount = 0;
-			for (auto& firstIt : vec)
+			string LHS = r.LHS;
+			NULLABLE_STATUS status = FALSE;
+			for (auto& RHS : r.RHS)
 			{
-				if (nullableMap[currentNonTerminal] == TRUE)
+				if (RHS.size() == 1 && RHS[0] == "*" || RHS.size() == 0)
 				{
-					continue;
+					if (nullableMap[LHS] == TRUE)
+						continue;
+					nullableMap[LHS] = TRUE;
+					changed = true;
 				}
 
-				if (contains(firstIt,'n') && nullableMap[firstIt]== FALSE)
+				for (auto& word : RHS)
 				{
-					nullableMap[currentNonTerminal] = FALSE;
-					break;
-				}
-
-				if (contains(firstIt, 't') || nullableMap[firstIt] == FALSE)
-				{
-					nullableMap[currentNonTerminal] = FALSE;
-					terminalEncountered = true;
-					nullable = false;
-					wordCount++;
-				}
-
-				else if (terminalEncountered == false && firstIt == "*" && wordCount == 0)
-				{
-					nullableMap[currentNonTerminal] = TRUE;
-				}
-
-				else if (nullable && contains(firstIt, 'n') && isFirstEncountered)
-				{
-					if (nullableMap[firstIt] == TRUE)
+					if (word == "*")
+						continue;
+					if (nullableMap[word] == TRUE)
 					{
-						isFirstEncountered = false;
+						nullable = true;
 						continue;
 					}
-					
-					if (nullableMap[firstIt] == FALSE && nullableMap[currentNonTerminal] != TRUE)
+					else
 					{
-						nullableMap[currentNonTerminal] = FALSE;
 						nullable = false;
-						isFirstEncountered = true;
-						continue;
+						break;
 					}
-					else if (nullableMap[firstIt] == UNREAD)
-					{
-
-						nullableMap[firstIt] = POTENTIAL;
-						nullableMap[currentNonTerminal] = POTENTIAL;
-						wordCount++;
-					}
-					
-					//terminalEncountered = true;
 				}
-				
+				if (nullable)
+				{
+					if (nullableMap[LHS] == TRUE)
+						continue;
+					nullableMap[LHS] = TRUE;
+					changed = true;
+				}
+					
 			}
-			
-			//rules[i].nullable = true;
-			isFirstEncountered = true;
-			terminalEncountered = false;
-			waitingPotential = false;
-			nullable = true;
+
 		}
 	}
-
-	for (auto& p : nullableMap)
+	
+	for (auto it = nullableMap.begin(); it != nullableMap.end();) //fix map
 	{
-		if (p.second == POTENTIAL)
+		if (it->second != TRUE)
 		{
-			getNullable();
-			break;
+			it = nullableMap.erase(it);
+		}
+		else
+		{
+			it++;
 		}
 	}
 
 	
+
+	return;
 }
 
 void Parser::match(TokenType expectedType)
@@ -669,8 +860,12 @@ bool Parser::parseIDList()
 		if (!parseRHS())
 			return false;
 	}
-	else if (currentToken.lexeme == "")
+	else if (currentToken.token_type == STAR)
+	{
+		match(STAR);
 		return true;
+	}
+		
 
 	return false;
 }

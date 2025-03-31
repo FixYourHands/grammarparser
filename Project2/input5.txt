@@ -1,6 +1,13 @@
-A -> C B *
-A -> * A -> D C E *
-B -> * B -> b *
-C -> B D *
-D -> d E *
-E -> e D * D -> * #
+S -> A B e F D *
+S -> B C d E F *
+A -> A a B *
+A -> A A b B | *
+B -> C A *
+B -> c a a a a C b b b b A *
+C -> *
+C -> C c C *
+C -> E B *
+D -> E F *
+E -> F E *
+F -> D z D | C C *
+#
