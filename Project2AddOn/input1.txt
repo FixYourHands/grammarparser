@@ -1,0 +1,7 @@
+S -> A C *
+C -> c | *
+A -> a B C d | B Q | *
+B -> b B | d *
+Q -> q *
+#
+"bdqc"
