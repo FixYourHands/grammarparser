@@ -1,6 +1,0 @@
-E -> T A *
-A -> p T A | *
-T -> F B *
-B -> m F B | *
-F -> id | o E c *
-#

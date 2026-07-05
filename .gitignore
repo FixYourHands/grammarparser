@@ -1,0 +1,6 @@
+#visual studio files
+*.sln
+*.vcxproj*
+.vs/
+.zip
+x64
