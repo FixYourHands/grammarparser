@@ -64,6 +64,8 @@ Compile all core source files together via your terminal:
 
 g++ -std=c++11 project2.cc parser.cpp lexer.cc inputbuf.cc -o grammarparser
 
+```
+
 
 
 \## How to Run
@@ -78,7 +80,23 @@ The program reads the grammar representation from standard input (`stdin`) and a
 
 ./grammarparser \[task\_number] < path\_to\_grammar\_file.txt
 
+```
 
 
-Tasks \& Supported FeaturesThe parser executes distinct tasks based on the command-line argument provided:  Task 1 (Symbols List): Prints all Terminals, followed by all Non-Terminals, strictly in their order of appearance.  Task 2 (Nullability Analysis): Computes and lists all Non-Terminals that can derive the empty string.  Task 3 (FIRST Sets): Computes the foundational FIRST sets for every Non-Terminal in the grammar.  Task 4 (FOLLOW Sets): Evaluates the grammar and generates corresponding FOLLOW token sets.  Task 5 (Left-Factoring): Rewrites and prints the grammar rules cleanly after performing structural left-factoring.  Task 6 (Eliminate Left Recursion): Contains stubs to eliminate left recursion from the grammar.
+
+Tasks \& Supported Features:
+
+The parser executes distinct tasks based on the command-line argument provided:  
+
+Task 1 (Symbols List): Prints all Terminals, followed by all Non-Terminals, strictly in their order of appearance.  
+
+Task 2 (Nullability Analysis): Computes and lists all Non-Terminals that can derive the empty string.  
+
+Task 3 (FIRST Sets): Computes the foundational FIRST sets for every Non-Terminal in the grammar.  
+
+Task 4 (FOLLOW Sets): Evaluates the grammar and generates corresponding FOLLOW token sets.  
+
+Task 5 (Left-Factoring): Rewrites and prints the grammar rules cleanly after performing structural left-factoring.  
+
+Task 6 (Eliminate Left Recursion): Contains stubs to eliminate left recursion from the grammar.
 
